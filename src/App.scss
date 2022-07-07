@@ -116,7 +116,14 @@ header {
 
 main {
   background-color: #f5f5f5;
-  padding-inline: 20rem;
+  padding-inline: 10rem
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  padding-block: 20vh;
+  color: var(--primary-color);
 }
 
 section {
@@ -158,11 +165,12 @@ h3 {
 }
 
 .employer {
-  background: linear-gradient(10deg, #f4e2d8 30%, #ba5370 180%);
+  background: linear-gradient(10deg, #FFFFFF 40%, #a7dcf0 130%);
   padding: 2rem;
   box-shadow: -0.5rem 0.5rem #5a5a58;
   border-radius: 20px;
   width: 100%;
+  max-width: 1500px;
 
   display: grid;
   grid-template-columns: 1.5fr 6fr 1.5fr;
@@ -250,12 +258,13 @@ h3 {
 }
 
 @media only screen and (max-width: 1500px) {
-  main {
-    padding-inline: 10rem;
-  }
 
   .employer-stats {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  main {
+    padding-inline: 5rem;
   }
 }
 
@@ -265,7 +274,7 @@ h3 {
   }
 
   main {
-    padding-inline: 3rem;
+    padding-inline: 1rem;
   }
 
   header {
@@ -282,7 +291,7 @@ h3 {
   }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 800px) {
   :root {
     font-size: 13px;
   }
