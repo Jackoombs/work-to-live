@@ -1,4 +1,5 @@
 import React from "react";
+import { AiFillFire } from "react-icons/ai"
 
 function EmployerScore({ employer }) {
 
@@ -15,7 +16,7 @@ function EmployerScore({ employer }) {
 
   return (
     <div className="score">
-      <h3>Life Score...</h3>
+      <h3><AiFillFire />Life Score...</h3>
       <p>{scoreCalc()}</p>
     </div>
   )

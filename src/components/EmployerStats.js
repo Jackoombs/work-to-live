@@ -1,4 +1,7 @@
 import React from "react";
+import { IoMdMale, IoMdFemale, IoIosCheckbox} from "react-icons/io"
+import { BsPiggyBank } from "react-icons/bs"
+import { RiScalesLine } from "react-icons/ri"
 
 function EmployerStats({ employer }) {
 
@@ -6,7 +9,7 @@ function EmployerStats({ employer }) {
     if (employer.pensionMatching) {
       return (
         <li>
-          Matching
+          Matched <IoIosCheckbox color="green"/>
         </li>
       )
     }
@@ -15,31 +18,31 @@ function EmployerStats({ employer }) {
   return (
     <div className="employer-stats">
 
-      <div className="stat" style={{backgroundColor: "#F5F0BB"}}>
-        <h3>Pensions</h3>
+      <div className="stat">
+        <h3><BsPiggyBank />Pensions</h3>
         <ul>
           <li>{employer.pensionContribution}% of salary contribution.</li>
           {isMatching()}
         </ul>
       </div>
 
-      <div className="parental-leave" style={{backgroundColor: "#C4DFAA"}}>
+      <div className="parental-leave">
         <div className="stat"> 
-          <h3>Maternity</h3>
+          <h3><IoMdFemale />Maternity</h3>
           <ul>
             <li>{employer.maternityLeave} weeks full pay.</li>
           </ul>
         </div>
         <div className="stat">
-        <h3>Paternity</h3>
+        <h3><IoMdMale />Paternity</h3>
           <ul>
             <li>{employer.paternityLeave} weeks full pay.</li>
           </ul>
         </div>
       </div>
 
-      <div className="stat" style={{backgroundColor: "#aad6da"}}>
-        <h3>Balance</h3>
+      <div className="stat">
+        <h3><RiScalesLine />Balance</h3>
         <ul>
           <li>{employer.holidayEntitlement} days holiday entitlement.</li>
         </ul>
