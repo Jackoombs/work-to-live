@@ -21,7 +21,7 @@ function EmployerStats({ employer }) {
       <div className="stat">
         <h3><BsPiggyBank />Pensions</h3>
         <ul>
-          <li>{employer.pensionContribution}% of salary contribution.</li>
+          {employer.pensionContribution ? <li>{employer.pensionContribution}% of salary contribution.</li> : "Unknown"}
           {isMatching()}
         </ul>
       </div>
@@ -30,13 +30,13 @@ function EmployerStats({ employer }) {
         <div className="stat"> 
           <h3><IoMdFemale />Maternity</h3>
           <ul>
-            <li>{employer.maternityLeave} weeks full pay.</li>
+            {employer.maternityLeave ? <li>{employer.maternityLeave} weeks full pay.</li> : "Unknown"}
           </ul>
         </div>
         <div className="stat">
         <h3><IoMdMale />Paternity</h3>
           <ul>
-            <li>{employer.paternityLeave} weeks full pay.</li>
+            {employer.paternityLeave ? <li>{employer.paternityLeave} weeks full pay.</li> : "Unknown"}
           </ul>
         </div>
       </div>
@@ -44,7 +44,7 @@ function EmployerStats({ employer }) {
       <div className="stat">
         <h3><RiScalesLine />Balance</h3>
         <ul>
-          <li>{employer.holidayEntitlement} days holiday entitlement.</li>
+          {employer.holidayEntitlement ? <li>{employer.holidayEntitlement} days holiday entitlement.</li> : "Unknown"}
         </ul>
       </div>
     </div>
