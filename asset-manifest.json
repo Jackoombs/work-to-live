@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/work-to-live/static/css/main.6b1915e0.css",
+    "main.js": "/work-to-live/static/js/main.780044b3.js",
+    "static/js/787.cc22751d.chunk.js": "/work-to-live/static/js/787.cc22751d.chunk.js",
+    "index.html": "/work-to-live/index.html",
+    "main.6b1915e0.css.map": "/work-to-live/static/css/main.6b1915e0.css.map",
+    "main.780044b3.js.map": "/work-to-live/static/js/main.780044b3.js.map",
+    "787.cc22751d.chunk.js.map": "/work-to-live/static/js/787.cc22751d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b1915e0.css",
+    "static/js/main.780044b3.js"
+  ]
+}
