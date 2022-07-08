@@ -1,17 +1,23 @@
 import React from "react";
 import { AiFillFire } from "react-icons/ai"
 
-function EmployerScore({ employer }) {
+function EmployerScore({ employer, setEmployerList, highestValues, lowestValues }) {
 
   const scoreCalc = () => {
     const array = [
-                    employer.maternityLeave, 
-                    employer.paternityLeave, 
-                    employer.pensionContribution, 
-                    employer.holidayEntitlement
+                    arrayScore("maternityLeave"), 
+                    arrayScore("paternityLeave"), 
+                    arrayScore("pensionContribution"), 
+                    arrayScore("holidayEntitlement"), 
                   ]
-    const total = array.reduce((pre, curr) => pre + curr, 0)
-    return Math.round(total / 4)
+    const filteredArray = array.filter(field => field)
+    const total = filteredArray.reduce((pre, curr) => pre + curr, 0);
+    return total ? Math.round(total / filteredArray.length * 100) : "N/A"
+       
+  }
+
+  const arrayScore = (key) => {
+    return (employer[key] - lowestValues[key]) / (highestValues[key] - lowestValues[key])
   }
 
   return (

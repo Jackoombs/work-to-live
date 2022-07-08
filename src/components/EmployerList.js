@@ -9,6 +9,9 @@ function EmployerList(props) {
           <Employer 
             key={index}
             employer={employer}
+            setEmployerList={props.setEmployerList}
+            highestValues={props.highestValues}
+            lowestValues={props.lowestValues}
           />
         ))
       }

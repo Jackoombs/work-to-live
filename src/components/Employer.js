@@ -3,7 +3,7 @@ import EmployerTags from "./EmployerTags";
 import EmployerStats from "./EmployerStats";
 import EmployerScore from "./EmployerScore";
 
-function Employer({ employer }) {
+function Employer({ employer, setEmployerList, highestValues, lowestValues }) {
   return (
     <div className="employer">
       <EmployerTags 
@@ -15,6 +15,9 @@ function Employer({ employer }) {
       />
       <EmployerScore 
         employer={employer}
+        setEmployerList={setEmployerList}
+        highestValues={highestValues}
+        lowestValues={lowestValues}
       />
     </div>
   )
