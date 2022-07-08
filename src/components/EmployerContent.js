@@ -88,8 +88,9 @@ function EmployerContent() {
                     arrayScore(employer, "pensionContribution"), 
                     arrayScore(employer, "holidayEntitlement"), 
                   ]
-    const filteredArray = array.filter(field => field)
+    const filteredArray = array.filter(field => field === 0 || field)
     const total = filteredArray.reduce((pre, curr) => pre + curr, 0);
+    console.log(employer.name, filteredArray, total)
     return total ? Math.round(total / filteredArray.length * 100) : 0
        
   }
