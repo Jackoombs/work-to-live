@@ -10,16 +10,6 @@ function MobileNavigation() {
     setMenuOpen(menuOpen => !menuOpen)
   }
 
-  const showMenu = () => {
-    if (menuOpen) {
-      return (
-        <div className="mobileMenu">
-          <nav></nav>
-        </div>
-      )
-    }
-  }
-
   return (
     <nav className="mobile-nav">
       <button onClick={handleClick}>
