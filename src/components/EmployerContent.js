@@ -26,22 +26,30 @@ function EmployerContent() {
         holidayEntitlement: employer["Balance - Holiday days"]
       }))
       setEmployerList(newEmployerArray)
+      getHighestValues(newEmployerArray)
+      getLowestValues(newEmployerArray)
     }
     getCompanys()
   },[])
 
   useEffect(() => {
-    if (employerList) {
-      getHighestValues()
-      getLowestValues()
+    if (highestValues, lowestValues) {
+      const newEmployerList = [...employerList]
+      const listWithScore = newEmployerList.map(e => ({...e, score: scoreCalc(e)}))
+      listWithScore.sort((a, b) => {
+        const x = a["score"]
+        const y = b["score"]
+        return ((x > y) ? -1 : ((x < y) ? 1: 0))
+      })
+      setEmployerList(listWithScore)
     }
-  },[employerList])
+  },[highestValues, lowestValues])
 
-  const getHighestValues = () => {
-    const maternityLeave = getHighest("maternityLeave")
-    const paternityLeave = getHighest("paternityLeave")
-    const pensionContribution = getHighest("pensionContribution")
-    const holidayEntitlement = getHighest("holidayEntitlement")
+  const getHighestValues = (employer) => {
+    const maternityLeave = getHighest(employer, "maternityLeave")
+    const paternityLeave = getHighest(employer, "paternityLeave")
+    const pensionContribution = getHighest(employer, "pensionContribution")
+    const holidayEntitlement = getHighest(employer, "holidayEntitlement")
 
     setHighestValues({
       maternityLeave, 
@@ -51,15 +59,15 @@ function EmployerContent() {
     })
   }
 
-  const getHighest = (key) => {
-    return Math.max(...employerList.map(e => e[key]).filter(e => e !== undefined))
+  const getHighest = (employer, key) => {
+    return Math.max(...employer.map(e => e[key]).filter(e => e !== undefined))
   }
 
-  const getLowestValues = () => {
-    const maternityLeave = getLowest("maternityLeave")
-    const paternityLeave = getLowest("paternityLeave")
-    const pensionContribution = getLowest("pensionContribution")
-    const holidayEntitlement = getLowest("holidayEntitlement")
+  const getLowestValues = (employer) => {
+    const maternityLeave = getLowest(employer, "maternityLeave")
+    const paternityLeave = getLowest(employer, "paternityLeave")
+    const pensionContribution = getLowest(employer, "pensionContribution")
+    const holidayEntitlement = getLowest(employer, "holidayEntitlement")
 
     setLowestValues({
       maternityLeave, 
@@ -69,14 +77,31 @@ function EmployerContent() {
     })
   }
 
-  const getLowest = (key) => {
-    return Math.min(...employerList.map(e => e[key]).filter(e => e !== undefined))
+  const getLowest = (employer, key) => {
+    return Math.min(...employer.map(e => e[key]).filter(e => e !== undefined))
+  }
+
+  const scoreCalc = (employer) => {
+    const array = [
+                    arrayScore(employer, "maternityLeave"), 
+                    arrayScore(employer, "paternityLeave"), 
+                    arrayScore(employer, "pensionContribution"), 
+                    arrayScore(employer, "holidayEntitlement"), 
+                  ]
+    const filteredArray = array.filter(field => field)
+    const total = filteredArray.reduce((pre, curr) => pre + curr, 0);
+    return total ? Math.round(total / filteredArray.length * 100) : 0
+       
+  }
+
+  const arrayScore = (employer, key) => {
+    return (employer[key] - lowestValues[key]) / (highestValues[key] - lowestValues[key])
   }
 
   return (
 
     <>
-      { employerList && highestValues && lowestValues? 
+      { employerList? 
         <>
           <EmployerFilters />
           <EmployerList 
