@@ -5,8 +5,8 @@ function EmployerScore({ employer, setEmployerList, highestValues, lowestValues 
 
   return (
     <div className="score">
-      <h3><AiFillFire />Life Score...</h3>
-      <p>{employer.score}</p>
+      <h3><AiFillFire /> Life Score</h3>
+      <p> {employer.score}</p>
     </div>
   )
 }

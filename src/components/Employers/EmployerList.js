@@ -13,6 +13,7 @@ function EmployerList(props) {
             setEmployerList={props.setEmployerList}
             highestValues={props.highestValues}
             lowestValues={props.lowestValues}
+            tagColors={props.tagColors}
           />
         ))
       }

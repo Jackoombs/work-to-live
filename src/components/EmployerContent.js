@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import EmployerList from "./EmployerList";
-import EmployerFilters from "./EmployerFilters";
+import EmployerList from "./Employers/EmployerList";
+import EmployerFilters from "./Filters/EmployerFilters";
 import axios from "axios";
 import { SyncLoader } from "react-spinners";
 
@@ -10,6 +10,12 @@ function EmployerContent() {
   const [employerList, setEmployerList] = useState()
   const [highestValues, setHighestValues] = useState()
   const [lowestValues, setLowestValues] = useState()
+
+  const tagColors = {
+    FTSE: "#f15bb5",
+    TECH: "#fb5607",
+    OTHER: "#8338ec"
+  }
 
   useEffect(() => {
     const getCompanys = async () => {
@@ -90,9 +96,7 @@ function EmployerContent() {
                   ]
     const filteredArray = array.filter(field => field === 0 || field)
     const total = filteredArray.reduce((pre, curr) => pre + curr, 0);
-    console.log(employer.name, filteredArray, total)
-    return total ? Math.round(total / filteredArray.length * 100) : 0
-       
+    return total ? Math.round(total / filteredArray.length * 100) : 0   
   }
 
   const arrayScore = (employer, key) => {
@@ -104,12 +108,15 @@ function EmployerContent() {
     <>
       { employerList? 
         <>
-          <EmployerFilters />
+          <EmployerFilters 
+            tagColors={tagColors}
+          />
           <EmployerList 
             employerList={employerList} 
             setEmployerList={setEmployerList}
             highestValues={highestValues}
             lowestValues={lowestValues}
+            tagColors={tagColors}
           />
         </>
       : <div className="loader">

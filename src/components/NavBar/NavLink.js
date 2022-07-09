@@ -7,7 +7,7 @@ function NavLink(props) {
   useEffect(() => {
     setTimeout(() => {
       setAnimationClass("show-link")
-    },props.index * 400)
+    },props.index * 300)
   },[props.index])
 
   return (
