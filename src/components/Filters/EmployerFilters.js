@@ -4,9 +4,10 @@ import TagFilters from "./TagFilters"
 
 function EmployerFilters(props) {
   return (
-    <section>
+    <section className="filters">
+      <h3>Filters</h3>
       <TagFilters 
-        tagColors={props.tagColors}
+        setFilters={props.setFilters}
       />
       <BestWorstFilters />
     </section>

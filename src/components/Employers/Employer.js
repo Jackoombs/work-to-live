@@ -10,16 +10,12 @@ function Employer(props) {
       <EmployerTags 
         name={props.employer.name}
         tags={props.employer.tags}
-        tagColors={props.tagColors}
       />
       <EmployerStats 
         employer={props.employer}
       />
       <EmployerScore 
         employer={props.employer}
-        setEmployerList={props.setEmployerList}
-        highestValues={props.highestValues}
-        lowestValues={props.lowestValues}
       />
     </div>
   )

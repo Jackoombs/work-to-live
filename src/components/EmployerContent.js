@@ -7,18 +7,13 @@ import { SyncLoader } from "react-spinners";
 function EmployerContent() {
 
   axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.REACT_APP_API_KEY}`;
-  const [employerList, setEmployerList] = useState()
+  const [employerList, setEmployerList] = useState([{}])
   const [highestValues, setHighestValues] = useState()
   const [lowestValues, setLowestValues] = useState()
-
-  const tagColors = {
-    FTSE: "#f15bb5",
-    TECH: "#fb5607",
-    OTHER: "#8338ec"
-  }
+  const [filters, setFilters] = useState({FTSE:true, TECH: true, OTHER: true})
 
   useEffect(() => {
-    const getCompanys = async () => {
+    const getEmployers = async () => {
       const response = await axios.get(`https://api.airtable.com/v0/appkdJJNhilwa8hyn/Table%201?maxRecords=200&view=LIVE`)
       const data = await response.data.records
       const oldEmployerArray = await data.map(list => list.fields)
@@ -35,11 +30,11 @@ function EmployerContent() {
       getHighestValues(newEmployerArray)
       getLowestValues(newEmployerArray)
     }
-    getCompanys()
+    getEmployers()
   },[])
 
   useEffect(() => {
-    if (highestValues, lowestValues) {
+    if (highestValues && lowestValues) {
       const newEmployerList = [...employerList]
       const listWithScore = newEmployerList.map(e => ({...e, score: scoreCalc(e)}))
       listWithScore.sort((a, b) => {
@@ -106,17 +101,14 @@ function EmployerContent() {
   return (
 
     <>
-      { employerList? 
+      { "score" in employerList[0]? 
         <>
           <EmployerFilters 
-            tagColors={tagColors}
+            setFilters={setFilters}
           />
           <EmployerList 
             employerList={employerList} 
-            setEmployerList={setEmployerList}
-            highestValues={highestValues}
-            lowestValues={lowestValues}
-            tagColors={tagColors}
+            filters={filters}
           />
         </>
       : <div className="loader">

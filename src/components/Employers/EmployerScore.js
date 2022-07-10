@@ -1,7 +1,7 @@
 import React from "react";
 import { AiFillFire } from "react-icons/ai"
 
-function EmployerScore({ employer, setEmployerList, highestValues, lowestValues }) {
+function EmployerScore({ employer }) {
 
   return (
     <div className="score">

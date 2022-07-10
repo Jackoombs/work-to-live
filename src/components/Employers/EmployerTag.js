@@ -1,15 +1,9 @@
 import React from "react";
 
-function EmployerTag({ tag, tagColors }) {
-
-  const tagStyle = {
-    backgroundColor: tagColors[tag]
-  }
+function EmployerTag({ tag }) {
 
   return (
-    <li style={tagStyle}>
-      {tag}
-    </li>
+    <p className={`tag ${tag}`}>{tag}</p>
   )
 }
 

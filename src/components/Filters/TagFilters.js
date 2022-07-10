@@ -11,7 +11,7 @@ function EmployerFilters(props) {
         <FilterToggle 
           key={index}
           tag={tag}
-          color={props.tagColors[tag]}
+          setFilters={props.setFilters}
         />
       ))}
     </div>
