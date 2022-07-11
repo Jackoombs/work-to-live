@@ -8,9 +8,14 @@ function EmployerList(props) {
 
   useEffect(() => {
     const oldList = [...props.employerList]
-    const newList = removeUnwantedTags(oldList)
+    let newList = removeUnwantedTags(oldList)
+    sortList(newList, props.order.field)
+
+    if (props.order.bestWorst === "worst") {
+      newList = reverseList(newList, props.order.field)
+    }
     setFilteredList(newList)
-  },[props.filters])
+  },[props.filters, props.order])
 
   const removeUnwantedTags = (employers) => {
     const unwantedTags = []
@@ -26,6 +31,24 @@ function EmployerList(props) {
       } 
     })
     return filteredList
+  }
+
+  const sortList = (list, key) => {
+    list.sort((a, b) => {
+      const x = a[key] || 0
+      const y = b[key] || 0
+      return ((x > y) ? -1 : ((x < y) ? 1: 0))
+    })
+  }
+
+  const reverseList = (list, field) => {
+    list.reverse()
+    const accept=[]
+    const reject=[]
+    for (const e of list) {
+      e[field] ? accept.push(e) : reject.push(e)
+    }
+    return accept.concat(reject)
   }
   
 

@@ -7,13 +7,16 @@ function EmployerFilters(props) {
 
   return (
     <div className="toggles">
-      {tags.map ((tag, index) => (
-        <FilterToggle 
-          key={index}
-          tag={tag}
-          setFilters={props.setFilters}
-        />
-      ))}
+      <h3>filter by type...</h3>
+      <div className="switches">
+        {tags.map ((tag, index) => (
+          <FilterToggle 
+            key={index}
+            tag={tag}
+            setFilters={props.setFilters}
+          />
+        ))}
+      </div>
     </div>
   )
 }

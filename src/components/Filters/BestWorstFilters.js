@@ -1,9 +1,19 @@
 import React from "react";
+import SortList from "./SortList";
 
-function BestWorstFilters() {
+function BestWorstFilters(props) {
   return (
-    <div>
-      The best and worst filters.
+    <div className="best-worst">
+      <SortList 
+        bestWorst={"best"}
+        order={props.order}
+        setOrder={props.setOrder}
+      />
+      <SortList 
+        bestWorst={"worst"}
+        order={props.order}
+        setOrder={props.setOrder}
+      />
     </div>
   )
 }

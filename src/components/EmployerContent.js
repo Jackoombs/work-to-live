@@ -11,6 +11,7 @@ function EmployerContent() {
   const [highestValues, setHighestValues] = useState()
   const [lowestValues, setLowestValues] = useState()
   const [filters, setFilters] = useState({FTSE:true, TECH: true, OTHER: true})
+  const [order, setOrder] = useState({field: "score", bestWorst: "best"})
 
   useEffect(() => {
     const getEmployers = async () => {
@@ -37,11 +38,6 @@ function EmployerContent() {
     if (highestValues && lowestValues) {
       const newEmployerList = [...employerList]
       const listWithScore = newEmployerList.map(e => ({...e, score: scoreCalc(e)}))
-      listWithScore.sort((a, b) => {
-        const x = a["score"]
-        const y = b["score"]
-        return ((x > y) ? -1 : ((x < y) ? 1: 0))
-      })
       setEmployerList(listWithScore)
     }
   },[highestValues, lowestValues])
@@ -105,10 +101,14 @@ function EmployerContent() {
         <>
           <EmployerFilters 
             setFilters={setFilters}
+            order={order}
+            setOrder={setOrder}
           />
           <EmployerList 
             employerList={employerList} 
             filters={filters}
+            order={order}
+            setOrder={setOrder}
           />
         </>
       : <div className="loader">

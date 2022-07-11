@@ -5,11 +5,13 @@ import TagFilters from "./TagFilters"
 function EmployerFilters(props) {
   return (
     <section className="filters">
-      <h3>Filters</h3>
       <TagFilters 
         setFilters={props.setFilters}
       />
-      <BestWorstFilters />
+      <BestWorstFilters 
+        order={props.order}
+        setOrder={props.setOrder}
+      />
     </section>
   )
 }
