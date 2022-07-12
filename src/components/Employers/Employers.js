@@ -10,6 +10,7 @@ function EmployerContent() {
   const [employerList, setEmployerList] = useState([{}])
   const [highestValues, setHighestValues] = useState()
   const [lowestValues, setLowestValues] = useState()
+  const [averageValues, setAverageValues] =useState()
   const [filters, setFilters] = useState({FTSE:true, TECH: true, OTHER: true})
   const [order, setOrder] = useState({field: "score", bestWorst: "best"})
 
@@ -30,6 +31,7 @@ function EmployerContent() {
       setEmployerList(newEmployerArray)
       getHighestValues(newEmployerArray)
       getLowestValues(newEmployerArray)
+      getAverageValues(newEmployerArray)
     }
     getEmployers()
   },[])
@@ -76,6 +78,27 @@ function EmployerContent() {
 
   const getLowest = (employer, key) => {
     return Math.min(...employer.map(e => e[key]).filter(e => e !== undefined))
+  }
+
+  const getAverageValues = (employer) => {
+    const maternityLeave = getAverage(employer, "maternityLeave")
+    const paternityLeave = getAverage(employer, "paternityLeave")
+    const pensionContribution = getAverage(employer, "pensionContribution")
+    const holidayEntitlement = getAverage(employer, "holidayEntitlement")
+
+    setAverageValues({
+      maternityLeave, 
+      paternityLeave,
+      pensionContribution,
+      holidayEntitlement
+    })
+  }
+
+  const getAverage = (employer, key) => {
+    const filteredArray = employer
+      .filter(e => e[key] !== undefined)
+      .map(e => e[key])
+    return filteredArray.reduce((a, b) => (a + b)) / filteredArray.length
   }
 
   const scoreCalc = (employer) => {
