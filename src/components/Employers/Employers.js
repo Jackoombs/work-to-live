@@ -87,7 +87,9 @@ function EmployerContent() {
                   ]
     const filteredArray = array.filter(field => field === 0 || field)
     const total = filteredArray.reduce((pre, curr) => pre + curr, 0);
-    return total ? Math.round(total / filteredArray.length * 100) : 0   
+
+    if (filteredArray.length < 2) return "N/A"
+    else return Math.round(total / filteredArray.length * 100)
   }
 
   const arrayScore = (employer, key) => {

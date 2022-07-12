@@ -35,8 +35,10 @@ function EmployerList(props) {
 
   const sortList = (list, key) => {
     list.sort((a, b) => {
-      const x = a[key] || 0
-      const y = b[key] || 0
+      let x = a[key]
+      let y = b[key] 
+      if (x === undefined || x === "N/A") x = 0
+      if (y === undefined || y === "N/A") x = 0
       return ((x > y) ? -1 : ((x < y) ? 1: 0))
     })
   }
@@ -46,7 +48,7 @@ function EmployerList(props) {
     const accept=[]
     const reject=[]
     for (const e of list) {
-      e[field] ? accept.push(e) : reject.push(e)
+      !(e[field] === "N/A" || e[field] === undefined) ? accept.push(e) : reject.push(e)
     }
     return accept.concat(reject)
   }
