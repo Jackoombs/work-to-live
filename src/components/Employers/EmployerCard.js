@@ -3,7 +3,7 @@ import EmployerTags from "./EmployerTags";
 import EmployerStats from "./EmployerStats";
 import EmployerScore from "./EmployerScore";
 
-function Employer(props) {
+function EmployerCard(props) {
 
   return (
     <div className="employer">
@@ -21,4 +21,4 @@ function Employer(props) {
   )
 }
 
-export default Employer
+export default EmployerCard

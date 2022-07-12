@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import Employer from "./Employer";
+import EmployerCard from "./EmployerCard";
 
 function EmployerList(props) {
 
@@ -57,7 +57,7 @@ function EmployerList(props) {
       {
         filteredList &&
         filteredList.map((employer, index) => (
-          <Employer 
+          <EmployerCard 
             key={index}
             employer={employer}
           />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import EmployerList from "./Employers/EmployerList";
-import EmployerFilters from "./Filters/EmployerFilters";
+import EmployerList from "./EmployerList";
+import EmployerFilters from "../Filters/EmployerFilters";
 import axios from "axios";
 import { SyncLoader } from "react-spinners";
 

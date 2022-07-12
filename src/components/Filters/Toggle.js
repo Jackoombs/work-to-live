@@ -1,8 +1,7 @@
-import { useEffect } from "react";
 import { useState } from "react";
 import EmployerTag from "../Employers/EmployerTag";
 
-function FilterToggle(props) {
+function Toggle(props) {
 
   const [isChecked, setIsChecked] = useState(true)
 
@@ -22,4 +21,4 @@ function FilterToggle(props) {
   )
 }
 
-export default FilterToggle
+export default Toggle

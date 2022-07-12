@@ -1,11 +1,11 @@
 import React from "react";
 import BestWorstFilters from "./BestWorstFilters";
-import TagFilters from "./TagFilters"
+import TagToggles from "./TagToggles"
 
 function EmployerFilters(props) {
   return (
     <section className="filters">
-      <TagFilters 
+      <TagToggles
         setFilters={props.setFilters}
       />
       <BestWorstFilters 

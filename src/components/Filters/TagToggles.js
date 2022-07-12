@@ -1,7 +1,7 @@
 import React from "react";
-import FilterToggle from "./FilterToggle"
+import Toggle from "./Toggle"
 
-function EmployerFilters(props) {
+function TagToggles(props) {
 
   const tags = ["FTSE", "TECH", "OTHER"]
 
@@ -10,7 +10,7 @@ function EmployerFilters(props) {
       <h3>filter by type...</h3>
       <div className="switches">
         {tags.map ((tag, index) => (
-          <FilterToggle 
+          <Toggle 
             key={index}
             tag={tag}
             setFilters={props.setFilters}
@@ -21,4 +21,4 @@ function EmployerFilters(props) {
   )
 }
 
-export default EmployerFilters
+export default TagToggles

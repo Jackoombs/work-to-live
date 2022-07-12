@@ -1,17 +1,13 @@
 import './App.scss';
-import Header from './components/Header';
-import Tagline from './components/Tagline';
-import EmployerContent from './components/EmployerContent';
-import Footer from './components/Footer';
+import Header from './components/Home/Header';
+import Main from './components/Home/Main';
+import Footer from './components/Home/Footer';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <main>
-        <Tagline />
-        <EmployerContent />
-      </main>
+      <Main />
       <Footer />
     </div>
   );
