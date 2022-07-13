@@ -108,15 +108,27 @@ function EmployerContent() {
                     arrayScore(employer, "pensionContribution"), 
                     arrayScore(employer, "holidayEntitlement"), 
                   ]
-    const filteredArray = array.filter(field => field === 0 || field)
-    const total = filteredArray.reduce((pre, curr) => pre + curr, 0);
+    const isNA = checkNA(array)
+    if (isNA) return "N/A"
 
-    if (filteredArray.length < 2) return "N/A"
-    else return Math.round(total / filteredArray.length * 100)
+    // for (let i=0; i<array.length; i++) {
+    //   if (isNaN(array[i])){
+    //     array[i] = 0.5
+    //   }
+    // }
+    const filteredArray = array.filter(e => !isNaN(e))
+    console.log(employer.name, array)
+    const total = filteredArray.reduce((pre, curr) => pre + curr, 0);
+    return Math.round(total / filteredArray.length * 100)
   }
 
   const arrayScore = (employer, key) => {
     return (employer[key] - lowestValues[key]) / (highestValues[key] - lowestValues[key])
+  }
+
+  const checkNA = (array) => {
+    const validValues = array.filter(e => !isNaN(e))
+    return validValues <= 1 ? true : false
   }
 
   return (
