@@ -1,7 +1,9 @@
 import React from "react";
-import { IoMdMale, IoMdFemale, IoIosCheckbox} from "react-icons/io"
-import { BsPiggyBank } from "react-icons/bs"
-import { RiScalesLine } from "react-icons/ri"
+import Maternity from "../../assets/images/maternity.png"
+import Paternity from "../../assets/images/paternity.png"
+import Balance from "../../assets/images/balance.png"
+import {IoIosCheckbox} from "react-icons/io"
+import Retirement from "../../assets/images/retirement.png"
 
 function EmployerStats({ employer }) {
 
@@ -19,32 +21,32 @@ function EmployerStats({ employer }) {
     <div className="employer-stats">
 
       <div className="stat">
-        <h3><BsPiggyBank />Pensions</h3>
+        <h3><img src={Retirement} alt="retirement icon" />Pensions</h3>
         <ul>
-          {employer.pensionContribution ? <li>{employer.pensionContribution}% of salary contribution.</li> : "Unknown"}
+          {employer.pensionContribution ? <li>{employer.pensionContribution}% of salary contribution</li> : "Unknown"}
           {isMatching()}
         </ul>
       </div>
 
       <div className="parental-leave">
         <div className="stat"> 
-          <h3><IoMdFemale />Maternity</h3>
+          <h3><img src={Maternity} alt="maternity icon" />Maternity</h3>
           <ul>
-            {employer.maternityLeave ? <li>{employer.maternityLeave} weeks full pay.</li> : "Unknown"}
+            {employer.maternityLeave ? <li>{employer.maternityLeave} weeks full pay</li> : "Unknown"}
           </ul>
         </div>
         <div className="stat">
-        <h3><IoMdMale />Paternity</h3>
+        <h3><img src={Paternity} alt="paternity icon" />Paternity</h3>
           <ul>
-            {employer.paternityLeave ? <li>{employer.paternityLeave} weeks full pay.</li> : "Unknown"}
+            {employer.paternityLeave ? <li>{employer.paternityLeave} weeks full pay</li> : "Unknown"}
           </ul>
         </div>
       </div>
 
       <div className="stat">
-        <h3><RiScalesLine />Balance</h3>
+        <h3><img src={Balance} alt="balance icon" />Balance</h3>
         <ul>
-          {employer.holidayEntitlement ? <li>{employer.holidayEntitlement} days holiday entitlement.</li> : "Unknown"}
+          {employer.holidayEntitlement ? <li>{employer.holidayEntitlement} days holiday entitlement</li> : "Unknown"}
         </ul>
       </div>
     </div>
