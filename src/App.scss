@@ -3,7 +3,6 @@
 :root {
   --primary-color: #091747;
   --secondary-color: #ffc46b;
-  font-size: 14px;
 }
 
 * {
@@ -51,6 +50,10 @@ header {
     padding: 0.5rem 3rem;
     height: fit-content;
     align-self: center;
+  }
+
+  * {
+    font-size: 1.4rem;
   }
 
   .submit-employer {
@@ -157,7 +160,7 @@ h1, h2 {
 
 h3 {
   margin-bottom: 0.5rem;
-  font-size: 2rem;
+  font-size: 1.65rem;
   color: #3a4d8f;
 
   display: flex;
@@ -174,7 +177,7 @@ h3 {
 
 .employer {
   background: linear-gradient(10deg, #c9fff6 , #efdbff);
-  padding: 2rem;
+  padding: 1rem 2rem;
   box-shadow: 0.5rem 0.5rem  5px 2px  rgba($color: #5a5a58, $alpha: 0.2); 
   border-radius: 20px;
   width: 100%;
@@ -190,7 +193,7 @@ h3 {
   }
 }
 
-.employer-tags {
+.employer-tags, .tags {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -239,7 +242,7 @@ input:checked + .OTHER, .OTHER{
   }
 
   li {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -273,8 +276,8 @@ input:checked + .OTHER, .OTHER{
   align-items: center;
 
   p {
-    padding: 0.5rem 2rem;
-    font-size: 2rem;
+    padding: 0.25rem 2rem;
+    font-size: 1.75rem;
     font-weight: 800;
     background-color: var(--secondary-color);
     border-radius: 20px;
@@ -285,7 +288,6 @@ input:checked + .OTHER, .OTHER{
   }
   h3 {
     gap: 0.5rem;
-    font-size: 2rem;
   }
 }
 
@@ -477,6 +479,10 @@ input:checked + .slider:before {
 
   .employer-stats {
     grid-template-columns: 1fr;
+  }
+
+  .tags {
+    flex-direction: row;
   }
 }
 
