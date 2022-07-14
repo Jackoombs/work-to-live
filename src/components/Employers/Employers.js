@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import EmployerList from "./EmployerList";
-import EmployerFilters from "../Filters/EmployerFilters";
+import FilterSection from "../Filters/FilterSection";
 import axios from "axios";
 import { SyncLoader } from "react-spinners";
 
@@ -144,7 +144,7 @@ function EmployerContent() {
     <>
       { "score" in employerList[0]? 
         <>
-          <EmployerFilters 
+          <FilterSection 
             setFilters={setFilters}
             order={order}
             setOrder={setOrder}

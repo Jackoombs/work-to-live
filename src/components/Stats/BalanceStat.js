@@ -8,14 +8,14 @@ function BalanceStat({ employer }) {
     const benefits = [
       {isBenefit: employer.fourDayWeek, text: "4 day work week"},
       {isBenefit: employer.workingFromHome, text: "Work from home"},
-      {isBenefit: employer.workingPartTime, text: "Part time work option"},
+      {isBenefit: employer.workingPartTime, text: "Part time option"},
       {isBenefit: employer.paidSabbatical, text: "Paid sabbatical"},
       {isBenefit: employer.unpaidSabbatical, text: "Unpaid sabbatical"}
     ]
     return(
-      benefits.map(benefit => (
+      benefits.map((benefit, index) => (
         benefit.isBenefit
-          ? <BooleanStat text={benefit.text} />
+          ? <BooleanStat key={index} text={benefit.text} />
           :''
       ))
     )

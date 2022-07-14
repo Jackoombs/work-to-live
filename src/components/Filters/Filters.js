@@ -2,7 +2,7 @@ import React from "react";
 import BestWorstFilters from "./BestWorstFilters";
 import TagToggles from "./TagToggles"
 
-function EmployerFilters(props) {
+function Filters(props) {
   return (
     <section className="filters">
       <TagToggles
@@ -12,8 +12,8 @@ function EmployerFilters(props) {
         order={props.order}
         setOrder={props.setOrder}
       />
-    </section>
+    </section >
   )
 }
 
-export default EmployerFilters
+export default Filters

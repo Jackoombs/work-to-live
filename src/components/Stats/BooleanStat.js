@@ -4,7 +4,7 @@ import {IoIosCheckbox} from "react-icons/io"
 function BooleanStat({ text }) {
   return (
     <li>
-        <IoIosCheckbox color="green"/>
+        <IoIosCheckbox color="green" size="1.4rem"/>
         {text}
     </li>
   )
