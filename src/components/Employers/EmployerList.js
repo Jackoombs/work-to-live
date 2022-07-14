@@ -61,6 +61,7 @@ function EmployerList(props) {
         filteredList.map((employer, index) => (
           <EmployerCard 
             key={index}
+            index={index}
             employer={employer}
           />
         ))

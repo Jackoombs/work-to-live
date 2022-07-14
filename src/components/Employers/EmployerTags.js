@@ -6,12 +6,14 @@ function EmployerTags(props) {
   return (
     <div className="employer-tags">
       <h3>{props.name}</h3>
+      <div className="tags">
         {props.tags.map((tag, index) => (
           <EmployerTag 
             key={index}
             tag={tag}
           />
         ))}
+      </div>
     </div>
   )
 }

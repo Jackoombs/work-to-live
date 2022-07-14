@@ -18,15 +18,24 @@ function EmployerContent() {
     const getEmployers = async () => {
       const response = await axios.get(`https://api.airtable.com/v0/appkdJJNhilwa8hyn/Table%201?maxRecords=200&view=LIVE`)
       const data = await response.data.records
+      console.log(data)
       const oldEmployerArray = await data.map(list => list.fields)
       const newEmployerArray = await oldEmployerArray.map(employer => ({
         name: employer["Name of Company"],
         tags: employer["company type"],
         maternityLeave: employer["Maternity Leave - Weeks at full pay?"],
+        maternityNotes: employer["Maternity notes"],
         paternityLeave: employer["Paternity - Weeks?"],
+        maternityNotes: employer["Paternity notes"],
         pensionMatching: employer["Pension - Matching?"],
         pensionContribution: employer["Pension - Contributions"],
-        holidayEntitlement: employer["Balance - Holiday days"]
+        pensionNotes: employer["Pension details"],
+        holidayEntitlement: employer["Balance - Holiday days"],
+        workingFromHome: employer["Balance - Flexible Working - WFH whenever?"],
+        workingPartTime: employer["Balance - Flexible Working - 4 day week/part-time"],
+        paidSabbatical: employer["Balance - Paid sabbaticals"],
+        unpaidSabbatical: employer["Balance - unpaid sabbatical"],
+        fourDayWeek: employer["Balance - 4 day work week/full pay"]
       }))
       setEmployerList(newEmployerArray)
       getHighestValues(newEmployerArray)
@@ -117,7 +126,6 @@ function EmployerContent() {
     //   }
     // }
     const filteredArray = array.filter(e => !isNaN(e))
-    console.log(employer.name, array)
     const total = filteredArray.reduce((pre, curr) => pre + curr, 0);
     return Math.round(total / filteredArray.length * 100)
   }
