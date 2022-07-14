@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
 import NavLink from "./NavLink";
+import { motion } from "framer-motion"
 
 function NavLinks() {
-
-  const [showMenu, setShowMenu] = useState()
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShowMenu("show-menu")
-    },1)
-  },[])
 
   const links = [
     {
@@ -27,15 +20,21 @@ function NavLinks() {
   ]
 
   return (
-    <ul className={showMenu}>
+    <motion.ul
+      className="modal-content"
+      initial={{y: -100, opacity: 0}}
+      style={{ originY: 0 }}
+      transition={{ duration: 0.6, type: "spring", bounce: 0.4}}
+      animate={{ y: 0, opacity: 1 }}
+    >
       {links.map((link, index) => (
         <NavLink
           key={index}
-          index={(index+1) / 2}
+          index={index}
           link={link}
         />
       ))}
-    </ul>
+    </motion.ul>
   )
 }
 
