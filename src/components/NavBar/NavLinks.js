@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import NavLink from "./NavLink";
 import { motion } from "framer-motion"
 
@@ -21,11 +20,9 @@ function NavLinks() {
 
   return (
     <motion.ul
-      className="modal-content"
-      initial={{y: -100, opacity: 0}}
+      initial={{ opacity: 0}}
       style={{ originY: 0 }}
-      transition={{ duration: 0.6, type: "spring", bounce: 0.4}}
-      animate={{ y: 0, opacity: 1 }}
+      animate={{ opacity: 1 }}
     >
       {links.map((link, index) => (
         <NavLink

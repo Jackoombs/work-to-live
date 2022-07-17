@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../NavBar/NavBar"
 import Logo from "../../assets/images/logo.png"
+import { Link } from "react-router-dom"
 
 function Header() {
 
@@ -10,7 +11,7 @@ function Header() {
         <img src={Logo} alt="have a nice .life logo" />
       </div>
       <NavBar />
-      <a  className="submit-employer" href="">Sumbit your<br />employer</a>
+      <Link  className="submit-employer" to="/submit-employer">Sumbit your<br />employer</Link>
     </header>
   )
 }

@@ -35,7 +35,8 @@ function EmployerContent() {
         workingPartTime: employer["Balance - Flexible Working - 4 day week/part-time"],
         paidSabbatical: employer["Balance - Paid sabbaticals"],
         unpaidSabbatical: employer["Balance - unpaid sabbatical"],
-        fourDayWeek: employer["Balance - 4 day work week/full pay"]
+        fourDayWeek: employer["Balance - 4 day work week/full pay"],
+        balanceNotes: employer["Balance - notes"]
       }))
       setEmployerList(newEmployerArray)
       getHighestValues(newEmployerArray)
@@ -119,12 +120,6 @@ function EmployerContent() {
                   ]
     const isNA = checkNA(array)
     if (isNA) return "N/A"
-
-    // for (let i=0; i<array.length; i++) {
-    //   if (isNaN(array[i])){
-    //     array[i] = 0.5
-    //   }
-    // }
     const filteredArray = array.filter(e => !isNaN(e))
     const total = filteredArray.reduce((pre, curr) => pre + curr, 0);
     return Math.round(total / filteredArray.length * 100)

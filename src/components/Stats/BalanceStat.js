@@ -1,6 +1,7 @@
 import React from "react";
 import Balance from "../../assets/images/balance.png"
 import BooleanStat from "./BooleanStat"
+import SubmitLink from "./SubmitLink";
 
 function BalanceStat({ employer }) {
 
@@ -19,7 +20,14 @@ function BalanceStat({ employer }) {
           :''
       ))
     )
-    
+  }
+
+  const showNote = () => {
+    if (employer.balanceNotes){
+      return(
+        <li>{employer.balanceNotes}</li>
+      )
+    }
   }
 
   return (
@@ -28,8 +36,9 @@ function BalanceStat({ employer }) {
       <ul>
         {employer.holidayEntitlement 
           ? <li>{employer.holidayEntitlement} days holiday entitlement</li> 
-          : "Unknown"}
+          : <SubmitLink field="holiday"/>}
         {showBenefits()}
+        {showNote}
       </ul>
     </div>
   )
