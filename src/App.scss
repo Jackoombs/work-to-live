@@ -199,14 +199,23 @@ h3 {
 }
 
 .employer-tags{
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+
   .tags {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 0.5rem;
   }
   img {
-    height: 3rem;
+    margin: 1rem;
+    height: auto;
     width: auto;
+    max-height: 80px;
+    max-width: 100%;
+    align-self: center;
+    justify-self: center;
   }
 }
 

@@ -12,8 +12,8 @@ function App() {
         <BrowserRouter>
           <Header />
             <Routes>
-              <Route path="/" element={<Main />}/>
-              <Route path="/submit-employer" element={<SubmitEmployer />}/>
+              <Route path="/work-to-live" exact element={<Main />}/>
+              <Route path="/work-to-live/submit-employer" element={<SubmitEmployer />}/>
             </Routes>
           <Footer />
         </BrowserRouter>

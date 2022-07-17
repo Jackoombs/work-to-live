@@ -10,7 +10,6 @@ function EmployerTags(props) {
   return (
     <div className="employer-tags">
       <h3>{props.name}</h3>
-      <img src={logoLink()} alt="" />
       <div className="tags">
         {props.tags.map((tag, index) => (
           <EmployerTag 
@@ -19,6 +18,7 @@ function EmployerTags(props) {
           />
         ))}
       </div>
+      <img src={logoLink()} alt="" />
     </div>
   )
 }
