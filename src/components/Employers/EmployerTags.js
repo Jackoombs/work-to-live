@@ -4,6 +4,7 @@ import EmployerTag from "./EmployerTag";
 function EmployerTags(props) {
 
   const logoLink = () => {
+    if (props.logo) return props.logo
     return `https://logo.clearbit.com/${props.name.replace(/ /g, "")}.com?size=250`
   }
 

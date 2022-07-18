@@ -23,10 +23,11 @@ function EmployerContent() {
       const newEmployerArray = await oldEmployerArray.map(employer => ({
         name: employer["Name of Company"],
         tags: employer["company type"],
+        logo: employer["Company Logo"],
         maternityLeave: employer["Maternity Leave - Weeks at full pay?"],
         maternityNotes: employer["Maternity notes"],
         paternityLeave: employer["Paternity - Weeks?"],
-        maternityNotes: employer["Paternity notes"],
+        paternityNotes: employer["Paternity notes"],
         pensionMatching: employer["Pension - Matching?"],
         pensionContribution: employer["Pension - Contributions"],
         pensionNotes: employer["Pension details"],
@@ -120,9 +121,13 @@ function EmployerContent() {
                   ]
     const isNA = checkNA(array)
     if (isNA) return "N/A"
-    const filteredArray = array.filter(e => !isNaN(e))
-    const total = filteredArray.reduce((pre, curr) => pre + curr, 0);
-    return Math.round(total / filteredArray.length * 100)
+    const averagedArray = array.map(e => {
+      if (isNaN(e)) return 0.5
+      else return e
+    })
+    const total = averagedArray.reduce((pre, curr) => pre + curr, 0);
+    console.log(employer.name, array, averagedArray, total)
+    return Math.round(total / 4 * 100)
   }
 
   const arrayScore = (employer, key) => {

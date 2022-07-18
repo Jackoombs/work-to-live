@@ -7,9 +7,9 @@ function Header() {
 
   return (
     <header>
-      <div className="logo">
+      <Link className="logo" to="/work-to-live">
         <img src={Logo} alt="have a nice .life logo" />
-      </div>
+      </Link>
       <NavBar />
       <Link  className="submit-employer" to="/work-to-live/submit-employer">Sumbit your<br />employer</Link>
     </header>

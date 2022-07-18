@@ -21,6 +21,7 @@ function EmployerCard(props) {
         <EmployerTags
           name={props.employer.name}
           tags={props.employer.tags}
+          logo={props.employer.logo}
         />
         <EmployerStats
           employer={props.employer}
