@@ -19,7 +19,7 @@ function ParentalStat({ employer }) {
         <h3><img src={Maternity} alt="maternity icon" />Maternity</h3>
         <ul>
           {employer.maternityLeave 
-          ? <li>{employer.maternityLeave} weeks full pay</li> 
+          ? <li className="stat-bold">{employer.maternityLeave} weeks full pay</li> 
           : <SubmitLink field="maternity"/>}
           {showNotes(employer.maternityNotes)}
         </ul>
@@ -28,7 +28,7 @@ function ParentalStat({ employer }) {
       <h3><img src={Paternity} alt="paternity icon" />Paternity</h3>
         <ul>
           {employer.paternityLeave 
-            ? <li>{employer.paternityLeave} weeks full pay</li> 
+            ? <li className="stat-bold">{employer.paternityLeave} weeks full pay</li> 
             : <SubmitLink field="paternity"/>}
             {showNotes(employer.paternityNotes)}
         </ul>

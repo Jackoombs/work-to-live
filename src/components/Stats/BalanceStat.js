@@ -35,7 +35,7 @@ function BalanceStat({ employer }) {
       <h3><img src={Balance} alt="balance icon" />Balance</h3>
       <ul>
         {employer.holidayEntitlement 
-          ? <li>{employer.holidayEntitlement} days holiday entitlement</li> 
+          ? <li className="stat-bold">{employer.holidayEntitlement} days holiday entitlement</li> 
           : <SubmitLink field="holiday"/>}
         {showBenefits()}
         {showNote}
