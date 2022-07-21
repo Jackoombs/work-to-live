@@ -18,7 +18,6 @@ function EmployerContent() {
     const getEmployers = async () => {
       const response = await axios.get(`https://api.airtable.com/v0/appkdJJNhilwa8hyn/Table%201?maxRecords=200&view=LIVE`)
       const data = await response.data.records
-      console.log(data)
       const oldEmployerArray = await data.map(list => list.fields)
       const newEmployerArray = await oldEmployerArray.map(employer => ({
         name: employer["Name of Company"],
@@ -126,7 +125,6 @@ function EmployerContent() {
       else return e
     })
     const total = averagedArray.reduce((pre, curr) => pre + curr, 0);
-    console.log(employer.name, array, averagedArray, total)
     return Math.round(total / 4 * 100)
   }
 
