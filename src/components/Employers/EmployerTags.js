@@ -19,7 +19,9 @@ function EmployerTags(props) {
           />
         ))}
       </div>
-      <img src={logoLink()} alt="" />
+      <div className="logo-frame">
+        <img src={logoLink()} alt={`${props.name} logo`} />
+      </div>
     </div>
   )
 }

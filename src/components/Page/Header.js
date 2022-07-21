@@ -11,7 +11,7 @@ function Header() {
         <img src={Logo} alt="have a nice .life logo" />
       </Link>
       <NavBar />
-      <Link  className="submit-employer" to="/work-to-live/submit-employer">Sumbit your<br />employer</Link>
+      <Link  className="submit-employer" to="/work-to-live/submit-employer">Submit your<br />employer</Link>
     </header>
   )
 }

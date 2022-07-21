@@ -20,6 +20,7 @@ function MobileFilters(props) {
   return (
     <section className="mobile-filters">
       <Link 
+        className="submit-employer"
         to="/submit-employer">
         Submit your employer
       </Link>
