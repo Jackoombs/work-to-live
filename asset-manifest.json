@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/work-to-live/static/css/main.b64d2a16.css",
-    "main.js": "/work-to-live/static/js/main.aca3daa2.js",
+    "main.css": "/work-to-live/static/css/main.4df6c1ce.css",
+    "main.js": "/work-to-live/static/js/main.e899544e.js",
     "static/js/787.cc22751d.chunk.js": "/work-to-live/static/js/787.cc22751d.chunk.js",
     "static/media/logo.png": "/work-to-live/static/media/logo.887c9024ec864c6c00ea.png",
     "index.html": "/work-to-live/index.html",
-    "main.b64d2a16.css.map": "/work-to-live/static/css/main.b64d2a16.css.map",
-    "main.aca3daa2.js.map": "/work-to-live/static/js/main.aca3daa2.js.map",
+    "main.4df6c1ce.css.map": "/work-to-live/static/css/main.4df6c1ce.css.map",
+    "main.e899544e.js.map": "/work-to-live/static/js/main.e899544e.js.map",
     "787.cc22751d.chunk.js.map": "/work-to-live/static/js/787.cc22751d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b64d2a16.css",
-    "static/js/main.aca3daa2.js"
+    "static/css/main.4df6c1ce.css",
+    "static/js/main.e899544e.js"
   ]
 }
