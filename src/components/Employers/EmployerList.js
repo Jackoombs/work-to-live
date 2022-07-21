@@ -38,7 +38,8 @@ function EmployerList(props) {
       let x = a[key]
       let y = b[key] 
       if (x === undefined || x === "N/A") x = 0
-      if (y === undefined || y === "N/A") x = 0
+      if (y === undefined || y === "N/A") y = 0
+      console.log(x, y)
       return ((x > y) ? -1 : ((x < y) ? 1: 0))
     })
   }
