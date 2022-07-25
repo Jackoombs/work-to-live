@@ -137,12 +137,11 @@ function EmployerContent() {
 
     const isNA = checkNA(array)
     if (isNA) return "N/A"
+
     const averagedArray = array.map(e => {
       if (isNaN(e)) return 0.5
       else return e
     })
-
-    console.log(employer.name, additionalBenefitScores(employer))
     averagedArray.push(additionalBenefitScores(employer))
     const total = averagedArray.reduce((pre, curr) => pre + curr, 0);
     return Math.round(total / averagedArray.length * 100)
