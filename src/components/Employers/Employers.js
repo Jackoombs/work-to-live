@@ -16,9 +16,8 @@ function EmployerContent() {
 
   useEffect(() => {
     const getEmployers = async () => {
-      const response = await axios.get(`https://api.airtable.com/v0/appkdJJNhilwa8hyn/Table%201?maxRecords=200&view=LIVE`)
-      const data = await response.data.records
-      const oldEmployerArray = await data.map(list => list.fields)
+      const records = await fetchRecords()
+      const oldEmployerArray = await records.map(list => list.fields)
       const newEmployerArray = await oldEmployerArray.map(employer => ({
         name: employer["Name of Company"],
         tags: employer["company type"],
@@ -32,12 +31,14 @@ function EmployerContent() {
         pensionNotes: employer["Pension details"],
         holidayEntitlement: employer["Balance - Holiday days"],
         workingFromHome: employer["Balance - Flexible Working - WFH whenever?"],
+        workingFromAbroad: employer["Balance - Flexible Working - Work from abroad (up to three months)"],
         workingPartTime: employer["Balance - Flexible Working - 4 day week/part-time"],
         paidSabbatical: employer["Balance - Paid sabbaticals"],
         unpaidSabbatical: employer["Balance - unpaid sabbatical"],
         fourDayWeek: employer["Balance - 4 day work week/full pay"],
         balanceNotes: employer["Balance - notes"]
       }))
+
       setEmployerList(newEmployerArray)
       getHighestValues(newEmployerArray)
       getLowestValues(newEmployerArray)
@@ -45,6 +46,21 @@ function EmployerContent() {
     }
     getEmployers()
   },[])
+
+  const fetchRecords = async () => {
+    const response = await axios.get(`https://api.airtable.com/v0/appkdJJNhilwa8hyn/Table%201`)
+    let records = await response.data.records
+    let offset = await response.data.offset
+
+    while (offset) {
+      const newResponse = await axios.get(`https://api.airtable.com/v0/appkdJJNhilwa8hyn/Table%201?offset=${offset}`)
+      const newRecords = await newResponse.data.records
+      records = [...records, ...newRecords]
+      offset = await newResponse.data.offset
+    }
+
+    return records
+  }
 
   useEffect(() => {
     if (highestValues && lowestValues) {
@@ -118,14 +134,18 @@ function EmployerContent() {
                     arrayScore(employer, "pensionContribution"), 
                     arrayScore(employer, "holidayEntitlement"), 
                   ]
+
     const isNA = checkNA(array)
     if (isNA) return "N/A"
     const averagedArray = array.map(e => {
       if (isNaN(e)) return 0.5
       else return e
     })
+
+    console.log(employer.name, additionalBenefitScores(employer))
+    averagedArray.push(additionalBenefitScores(employer))
     const total = averagedArray.reduce((pre, curr) => pre + curr, 0);
-    return Math.round(total / 4 * 100)
+    return Math.round(total / averagedArray.length * 100)
   }
 
   const arrayScore = (employer, key) => {
@@ -135,6 +155,19 @@ function EmployerContent() {
   const checkNA = (array) => {
     const validValues = array.filter(e => !isNaN(e))
     return validValues <= 1 ? true : false
+  }
+
+  const additionalBenefitScores = (employer) => {
+    const benefits = [
+      employer.workingFromHome,
+      employer.workingPartTime,
+      employer.workingFromAbroad,
+      employer.paidSabbatical,
+      employer.unpaidSabbatical,
+      employer.fourDayWeek
+    ]
+    const scoreArray = benefits.map(benefit => benefit ? 1 / benefits.length : 0.5 / benefits.length) 
+    return scoreArray.reduce((pre, curr) => pre + curr, 0);
   }
 
   return (
